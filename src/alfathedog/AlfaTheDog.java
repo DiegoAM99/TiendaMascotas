@@ -86,13 +86,14 @@ public class AlfaTheDog extends javax.swing.JFrame {
         alfaTheDogNombre.setBounds(180, 70, 280, 60);
 
         salirbotton.setText("Salir");
+        salirbotton.setContentAreaFilled(false);
         salirbotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirbottonActionPerformed(evt);
             }
         });
         getContentPane().add(salirbotton);
-        salirbotton.setBounds(430, 10, 56, 32);
+        salirbotton.setBounds(450, 10, 70, 32);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
