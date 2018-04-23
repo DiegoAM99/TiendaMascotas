@@ -29,17 +29,39 @@ public class Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        tienda = new javax.swing.JButton();
+        clientes = new javax.swing.JButton();
+        mascotas = new javax.swing.JButton();
+        cerrarSesion = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 530, 310);
+        tienda.setText("TIENDA");
+        getContentPane().add(tienda);
+        tienda.setBounds(360, 30, 180, 60);
+
+        clientes.setText("CLIENTES");
+        getContentPane().add(clientes);
+        clientes.setBounds(0, 30, 180, 60);
+
+        mascotas.setText("MASCOTAS");
+        getContentPane().add(mascotas);
+        mascotas.setBounds(180, 30, 180, 60);
+
+        cerrarSesion.setForeground(new java.awt.Color(0, 51, 255));
+        cerrarSesion.setText("cerrar sesion");
+        cerrarSesion.setContentAreaFilled(false);
+        getContentPane().add(cerrarSesion);
+        cerrarSesion.setBounds(427, 0, 110, 29);
+
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
+        fondo.setText("jLabel1");
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 540, 310);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,6 +102,10 @@ public class Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton cerrarSesion;
+    private javax.swing.JButton clientes;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JButton mascotas;
+    private javax.swing.JButton tienda;
     // End of variables declaration//GEN-END:variables
 }
