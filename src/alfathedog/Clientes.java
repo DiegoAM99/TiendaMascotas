@@ -54,8 +54,13 @@ public class Clientes extends javax.swing.JFrame {
         cerrarSesion.setForeground(new java.awt.Color(0, 51, 255));
         cerrarSesion.setText("cerrar sesion");
         cerrarSesion.setContentAreaFilled(false);
+        cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 29);
+        cerrarSesion.setBounds(427, 0, 110, 23);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
@@ -65,6 +70,10 @@ public class Clientes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
