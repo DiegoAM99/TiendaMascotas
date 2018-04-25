@@ -5,6 +5,8 @@
  */
 package alfathedog;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author steven
@@ -16,7 +18,7 @@ public class Clientes extends javax.swing.JFrame {
      */
     public Clientes() {
         initComponents();
-        setSize(530, 310);
+        setSize(530, 427);
         this.setLocationRelativeTo(null);
     }
 
@@ -29,24 +31,29 @@ public class Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
         cerrarSesion = new javax.swing.JButton();
+        jTextBuscarCliente = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
 
+        tienda.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         tienda.setText("TIENDA");
         getContentPane().add(tienda);
         tienda.setBounds(360, 30, 180, 60);
 
+        clientes.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         clientes.setText("CLIENTES");
         getContentPane().add(clientes);
         clientes.setBounds(0, 30, 180, 60);
 
+        mascotas.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         mascotas.setText("MASCOTAS");
         getContentPane().add(mascotas);
         mascotas.setBounds(180, 30, 180, 60);
@@ -60,20 +67,57 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 23);
+        cerrarSesion.setBounds(427, 0, 110, 32);
 
+        jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jTextBuscarCliente.setText("               BUSCAR CLIENTE");
+        jTextBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextBuscarClienteMouseClicked(evt);
+            }
+        });
+        jTextBuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextBuscarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextBuscarCliente);
+        jTextBuscarCliente.setBounds(50, 110, 260, 40);
+
+        fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
         fondo.setText("jLabel1");
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 540, 310);
+        fondo.setBounds(0, 0, 530, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
-        // TODO add your handling code here:
+        cerrarSesion.setVisible(true);
+         Clientes CL= new Clientes();
+            
+            CL.setVisible(false);
+            
+            dispose();
+            
+          AlfaTheDog atd= new AlfaTheDog();
+            
+            atd.setVisible(true);
+            
+            dispose();
+       
     }//GEN-LAST:event_cerrarSesionActionPerformed
+
+    private void jTextBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextBuscarClienteActionPerformed
+        
+    }//GEN-LAST:event_jTextBuscarClienteActionPerformed
+
+    private void jTextBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextBuscarClienteMouseClicked
+        jTextBuscarCliente.setText(" ");
+    }//GEN-LAST:event_jTextBuscarClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -114,6 +158,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JTextField jTextBuscarCliente;
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;
     // End of variables declaration//GEN-END:variables
