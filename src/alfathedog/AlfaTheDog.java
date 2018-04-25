@@ -19,7 +19,7 @@ public class AlfaTheDog extends javax.swing.JFrame {
      */
     public AlfaTheDog() {
         initComponents();
-        setSize(530, 427);
+        setSize(530, 208);
         this.setLocationRelativeTo(null);
     }
 
@@ -49,14 +49,14 @@ public class AlfaTheDog extends javax.swing.JFrame {
         login.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         login.setText("Usuario:");
         getContentPane().add(login);
-        login.setBounds(150, 240, 70, 27);
+        login.setBounds(150, 80, 70, 27);
 
         pasword.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         pasword.setText("Contraseña:");
         getContentPane().add(pasword);
-        pasword.setBounds(150, 270, 90, 27);
+        pasword.setBounds(150, 110, 90, 27);
         getContentPane().add(usuario);
-        usuario.setBounds(240, 240, 140, 26);
+        usuario.setBounds(240, 80, 140, 26);
 
         contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +64,7 @@ public class AlfaTheDog extends javax.swing.JFrame {
             }
         });
         getContentPane().add(contraseña);
-        contraseña.setBounds(240, 270, 140, 26);
+        contraseña.setBounds(240, 110, 140, 26);
 
         entrar.setBackground(new java.awt.Color(255, 255, 255));
         entrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -75,19 +75,25 @@ public class AlfaTheDog extends javax.swing.JFrame {
                 entrarMouseClicked(evt);
             }
         });
+        entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(entrar);
-        entrar.setBounds(200, 300, 110, 130);
+        entrar.setBounds(220, 160, 100, 50);
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logopq.png"))); // NOI18N
         getContentPane().add(logo);
-        logo.setBounds(440, 350, 90, 80);
+        logo.setBounds(440, 130, 90, 80);
 
         alfaTheDogNombre.setFont(new java.awt.Font("Courier New", 3, 60)); // NOI18N
         alfaTheDogNombre.setText("AlfaTheDog");
         getContentPane().add(alfaTheDogNombre);
-        alfaTheDogNombre.setBounds(90, 180, 370, 60);
+        alfaTheDogNombre.setBounds(90, 20, 370, 60);
 
+        salirbotton.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         salirbotton.setText("Salir");
         salirbotton.setContentAreaFilled(false);
         salirbotton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,13 +102,13 @@ public class AlfaTheDog extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salirbotton);
-        salirbotton.setBounds(450, 160, 70, 29);
+        salirbotton.setBounds(450, 0, 70, 29);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo cesped.jpg"))); // NOI18N
         fondo.setText("jLabel1");
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 530, 430);
+        fondo.setBounds(0, 0, 530, 682);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -136,6 +142,10 @@ public class AlfaTheDog extends javax.swing.JFrame {
     private void salirbottonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirbottonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_salirbottonActionPerformed
+
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entrarActionPerformed
 
     /**
      * @param args the command line arguments
