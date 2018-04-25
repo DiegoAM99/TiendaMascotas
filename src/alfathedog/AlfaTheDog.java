@@ -49,14 +49,14 @@ public class AlfaTheDog extends javax.swing.JFrame {
         login.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         login.setText("Usuario:");
         getContentPane().add(login);
-        login.setBounds(150, 210, 70, 27);
+        login.setBounds(150, 240, 70, 27);
 
         pasword.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         pasword.setText("Contraseña:");
         getContentPane().add(pasword);
-        pasword.setBounds(150, 240, 90, 27);
+        pasword.setBounds(150, 270, 90, 27);
         getContentPane().add(usuario);
-        usuario.setBounds(240, 210, 140, 20);
+        usuario.setBounds(240, 240, 140, 26);
 
         contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +64,7 @@ public class AlfaTheDog extends javax.swing.JFrame {
             }
         });
         getContentPane().add(contraseña);
-        contraseña.setBounds(240, 240, 140, 20);
+        contraseña.setBounds(240, 270, 140, 26);
 
         entrar.setBackground(new java.awt.Color(255, 255, 255));
         entrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,10 +83,10 @@ public class AlfaTheDog extends javax.swing.JFrame {
         getContentPane().add(logo);
         logo.setBounds(440, 350, 90, 80);
 
-        alfaTheDogNombre.setFont(new java.awt.Font("Consolas", 3, 55)); // NOI18N
+        alfaTheDogNombre.setFont(new java.awt.Font("Courier New", 3, 60)); // NOI18N
         alfaTheDogNombre.setText("AlfaTheDog");
         getContentPane().add(alfaTheDogNombre);
-        alfaTheDogNombre.setBounds(130, 90, 300, 100);
+        alfaTheDogNombre.setBounds(90, 180, 370, 60);
 
         salirbotton.setText("Salir");
         salirbotton.setContentAreaFilled(false);
@@ -96,7 +96,7 @@ public class AlfaTheDog extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salirbotton);
-        salirbotton.setBounds(450, 10, 70, 23);
+        salirbotton.setBounds(450, 160, 70, 29);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N

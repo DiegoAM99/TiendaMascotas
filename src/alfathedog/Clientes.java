@@ -18,7 +18,7 @@ public class Clientes extends javax.swing.JFrame {
      */
     public Clientes() {
         initComponents();
-        setSize(530, 427);
+        setSize(560, 430);
         this.setLocationRelativeTo(null);
     }
 
@@ -46,17 +46,17 @@ public class Clientes extends javax.swing.JFrame {
         tienda.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         tienda.setText("TIENDA");
         getContentPane().add(tienda);
-        tienda.setBounds(360, 30, 180, 60);
+        tienda.setBounds(370, 30, 180, 60);
 
         clientes.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         clientes.setText("CLIENTES");
         getContentPane().add(clientes);
-        clientes.setBounds(0, 30, 180, 60);
+        clientes.setBounds(10, 30, 180, 60);
 
         mascotas.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         mascotas.setText("MASCOTAS");
         getContentPane().add(mascotas);
-        mascotas.setBounds(180, 30, 180, 60);
+        mascotas.setBounds(190, 30, 180, 60);
 
         cerrarSesion.setForeground(new java.awt.Color(0, 51, 255));
         cerrarSesion.setText("cerrar sesion");
@@ -67,7 +67,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 32);
+        cerrarSesion.setBounds(427, 0, 110, 29);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jTextBuscarCliente.setText("               BUSCAR CLIENTE");
@@ -83,14 +83,14 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextBuscarCliente);
-        jTextBuscarCliente.setBounds(50, 110, 260, 40);
+        jTextBuscarCliente.setBounds(10, 90, 260, 40);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
         fondo.setText("jLabel1");
         getContentPane().add(fondo);
-        fondo.setBounds(0, 0, 530, 430);
+        fondo.setBounds(0, 0, 560, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
