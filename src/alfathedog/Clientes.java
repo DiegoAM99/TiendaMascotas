@@ -67,7 +67,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 29);
+        cerrarSesion.setBounds(427, 0, 110, 32);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jTextBuscarCliente.setText("               BUSCAR CLIENTE");
@@ -83,7 +83,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextBuscarCliente);
-        jTextBuscarCliente.setBounds(10, 90, 260, 40);
+        jTextBuscarCliente.setBounds(60, 220, 260, 40);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
