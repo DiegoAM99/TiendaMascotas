@@ -19,7 +19,7 @@ public class Clientes extends javax.swing.JFrame {
     public Clientes() {
         initComponents();
         setSize(560, 430);
-        jDialog1.setSize(560, 430);
+        jDialogNuevoCliente.setSize(560, 430);
         this.setLocationRelativeTo(null);
     }
 
@@ -32,13 +32,13 @@ public class Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        jDialogNuevoCliente = new javax.swing.JDialog();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
         cerrarSesion = new javax.swing.JButton();
         jTextBuscarCliente = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jButtonNuevoCliente = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,6 +50,7 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().add(tienda);
         tienda.setBounds(370, 30, 180, 60);
 
+        clientes.setBackground(new java.awt.Color(102, 102, 102));
         clientes.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         clientes.setText("CLIENTES");
         getContentPane().add(clientes);
@@ -57,6 +58,11 @@ public class Clientes extends javax.swing.JFrame {
 
         mascotas.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         mascotas.setText("MASCOTAS");
+        mascotas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mascotasMouseClicked(evt);
+            }
+        });
         getContentPane().add(mascotas);
         mascotas.setBounds(190, 30, 180, 60);
 
@@ -69,7 +75,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 32);
+        cerrarSesion.setBounds(427, 0, 110, 29);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jTextBuscarCliente.setText("               BUSCAR CLIENTE");
@@ -87,14 +93,14 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().add(jTextBuscarCliente);
         jTextBuscarCliente.setBounds(60, 110, 260, 40);
 
-        jButton1.setText("Nuevo");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonNuevoCliente.setText("Nuevo");
+        jButtonNuevoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jButton1MousePressed(evt);
+                jButtonNuevoClienteMousePressed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(390, 110, 120, 40);
+        getContentPane().add(jButtonNuevoCliente);
+        jButtonNuevoCliente.setBounds(390, 110, 120, 40);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -130,11 +136,19 @@ public class Clientes extends javax.swing.JFrame {
         jTextBuscarCliente.setText(" ");
     }//GEN-LAST:event_jTextBuscarClienteMouseClicked
 
-    private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+    private void jButtonNuevoClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNuevoClienteMousePressed
         Clientes CL= new Clientes();
-        jDialog1.setVisible(true);
+        jDialogNuevoCliente.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1MousePressed
+    }//GEN-LAST:event_jButtonNuevoClienteMousePressed
+
+    private void mascotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mascotasMouseClicked
+        Mascotas Ma= new Mascotas();
+            
+            Ma.setVisible(true);
+            
+            dispose();
+    }//GEN-LAST:event_mascotasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -175,8 +189,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JDialog jDialog1;
+    private javax.swing.JButton jButtonNuevoCliente;
+    private javax.swing.JDialog jDialogNuevoCliente;
     private javax.swing.JTextField jTextBuscarCliente;
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;

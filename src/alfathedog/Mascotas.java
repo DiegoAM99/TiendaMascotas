@@ -53,9 +53,15 @@ public class Mascotas extends javax.swing.JFrame {
 
         clientes.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         clientes.setText("CLIENTES");
+        clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clientesMouseClicked(evt);
+            }
+        });
         getContentPane().add(clientes);
         clientes.setBounds(10, 30, 180, 60);
 
+        mascotas.setBackground(new java.awt.Color(102, 102, 102));
         mascotas.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         mascotas.setText("MASCOTAS");
         getContentPane().add(mascotas);
@@ -73,7 +79,7 @@ public class Mascotas extends javax.swing.JFrame {
         cerrarSesion.setBounds(427, 0, 110, 29);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jTextBuscarCliente.setText("               BUSCAR CLIENTE");
+        jTextBuscarCliente.setText("               BUSCAR MASCOTA");
         jTextBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,6 +142,14 @@ public class Mascotas extends javax.swing.JFrame {
         jDialogNuevaMascota.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButtonNuevaMascotaMousePressed
+
+    private void clientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesMouseClicked
+        Clientes CL= new Clientes();
+            
+            CL.setVisible(true);
+            
+            dispose();
+    }//GEN-LAST:event_clientesMouseClicked
 
     /**
      * @param args the command line arguments
