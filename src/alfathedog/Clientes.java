@@ -9,18 +9,18 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author steven
+ * @author djs
  */
 public class Clientes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Clientes
-     */
+    int x, y;
+    
     public Clientes() {
         initComponents();
-        setSize(560, 430);
-        jDialogNuevoCliente.setSize(560, 430);
+        this.setSize(560, 430);
         this.setLocationRelativeTo(null);
+        jDialogNuevoCliente.setSize(560, 430);
+        
     }
 
     /**
@@ -39,6 +39,7 @@ public class Clientes extends javax.swing.JFrame {
         cerrarSesion = new javax.swing.JButton();
         jTextBuscarCliente = new javax.swing.JTextField();
         jButtonNuevoCliente = new javax.swing.JButton();
+        jLabelMover = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +76,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 29);
+        cerrarSesion.setBounds(427, 0, 110, 32);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -103,6 +104,20 @@ public class Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonNuevoCliente);
         jButtonNuevoCliente.setBounds(390, 110, 120, 40);
+
+        jLabelMover.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        jLabelMover.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabelMoverMouseDragged(evt);
+            }
+        });
+        jLabelMover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabelMoverMousePressed(evt);
+            }
+        });
+        getContentPane().add(jLabelMover);
+        jLabelMover.setBounds(1, 6, 420, 20);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -152,6 +167,15 @@ public class Clientes extends javax.swing.JFrame {
             dispose();
     }//GEN-LAST:event_mascotasMouseClicked
 
+    private void jLabelMoverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMoverMousePressed
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jLabelMoverMousePressed
+
+    private void jLabelMoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMoverMouseDragged
+        this.setLocation(this.getLocation().x + evt.getX() - x, this.getLocation().y + evt.getY() -  y);
+    }//GEN-LAST:event_jLabelMoverMouseDragged
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +217,7 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonNuevoCliente;
     private javax.swing.JDialog jDialogNuevoCliente;
+    private javax.swing.JLabel jLabelMover;
     private javax.swing.JTextField jTextBuscarCliente;
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;

@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author steven
+ * @author djs
  */
 public class Mascotas extends javax.swing.JFrame {
 
@@ -301,7 +301,7 @@ public class Mascotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 29);
+        cerrarSesion.setBounds(427, 0, 110, 32);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
