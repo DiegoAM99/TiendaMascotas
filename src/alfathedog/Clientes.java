@@ -77,8 +77,9 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().add(cerrarSesion);
         cerrarSesion.setBounds(427, 0, 110, 29);
 
-        jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
-        jTextBuscarCliente.setText("               BUSCAR CLIENTE");
+        jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextBuscarCliente.setText("Buscar Cliente");
         jTextBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,7 +94,8 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().add(jTextBuscarCliente);
         jTextBuscarCliente.setBounds(60, 110, 260, 40);
 
-        jButtonNuevoCliente.setText("Nuevo");
+        jButtonNuevoCliente.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
+        jButtonNuevoCliente.setText("Nuevo Cliente");
         jButtonNuevoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonNuevoClienteMousePressed(evt);
