@@ -19,7 +19,11 @@ public class Clientes extends javax.swing.JFrame {
         initComponents();
         this.setSize(560, 430);
         this.setLocationRelativeTo(null);
-        jDialogNuevoCliente.setSize(560, 430);
+  
+        //modificaciones de la ventana nueva mascota
+       
+        jDialogNuevoCliente.setSize(330, 400);
+        jDialogNuevoCliente.setLocation(840, 290);
         
     }
 
@@ -33,6 +37,17 @@ public class Clientes extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialogNuevoCliente = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelApellido = new javax.swing.JLabel();
+        jLabelDni = new javax.swing.JLabel();
+        jLabelTelefono = new javax.swing.JLabel();
+        jButtonSalirNuevoCliente = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
@@ -41,6 +56,53 @@ public class Clientes extends javax.swing.JFrame {
         jButtonNuevoCliente = new javax.swing.JButton();
         jLabelMover = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
+
+        jDialogNuevoCliente.setUndecorated(true);
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText(" NUEVO CLIENTE");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(9, 5, 220, 40);
+
+        jLabelNombre.setText("NOMBRE :");
+        jPanel1.add(jLabelNombre);
+        jLabelNombre.setBounds(30, 50, 70, 50);
+
+        jLabelApellido.setText("APELLIDO :");
+        jPanel1.add(jLabelApellido);
+        jLabelApellido.setBounds(30, 110, 70, 50);
+
+        jLabelDni.setText("DNI :");
+        jPanel1.add(jLabelDni);
+        jLabelDni.setBounds(30, 170, 70, 50);
+
+        jLabelTelefono.setText("TELEFONO :");
+        jPanel1.add(jLabelTelefono);
+        jLabelTelefono.setBounds(30, 230, 80, 50);
+
+        jButtonSalirNuevoCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
+        jButtonSalirNuevoCliente.setText("X");
+        jButtonSalirNuevoCliente.setContentAreaFilled(false);
+        jButtonSalirNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirNuevoClienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonSalirNuevoCliente);
+        jButtonSalirNuevoCliente.setBounds(287, 0, 40, 35);
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(120, 230, 140, 30);
+        jPanel1.add(jTextField2);
+        jTextField2.setBounds(120, 54, 140, 30);
+        jPanel1.add(jTextField3);
+        jTextField3.setBounds(120, 110, 140, 30);
+        jPanel1.add(jTextField4);
+        jTextField4.setBounds(120, 170, 140, 30);
+
+        jDialogNuevoCliente.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -156,7 +218,6 @@ public class Clientes extends javax.swing.JFrame {
     private void jButtonNuevoClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNuevoClienteMousePressed
         Clientes CL= new Clientes();
         jDialogNuevoCliente.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButtonNuevoClienteMousePressed
 
     private void mascotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mascotasMouseClicked
@@ -175,6 +236,10 @@ public class Clientes extends javax.swing.JFrame {
     private void jLabelMoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMoverMouseDragged
         this.setLocation(this.getLocation().x + evt.getX() - x, this.getLocation().y + evt.getY() -  y);
     }//GEN-LAST:event_jLabelMoverMouseDragged
+
+    private void jButtonSalirNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirNuevoClienteActionPerformed
+        jDialogNuevoCliente.setVisible(false);
+    }//GEN-LAST:event_jButtonSalirNuevoClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,9 +281,20 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonNuevoCliente;
+    private javax.swing.JButton jButtonSalirNuevoCliente;
     private javax.swing.JDialog jDialogNuevoCliente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelApellido;
+    private javax.swing.JLabel jLabelDni;
     private javax.swing.JLabel jLabelMover;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelTelefono;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextBuscarCliente;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;
     // End of variables declaration//GEN-END:variables
