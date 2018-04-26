@@ -24,8 +24,8 @@ public class Mascotas extends javax.swing.JFrame {
         
         //modificaciones de la ventana nueva mascota
        
-        jDialogNuevaMascota.setSize(330, 400);
-        jDialogNuevaMascota.setLocation(840, 290);
+        jDialogNuevaMascota.setSize(330, 450);
+        jDialogNuevaMascota.setLocation(840, 280);
         
         
     }
@@ -40,17 +40,232 @@ public class Mascotas extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialogNuevaMascota = new javax.swing.JDialog();
-        jLabelFondo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabeEspecie = new javax.swing.JLabel();
+        jLabelNuuevaMascota = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelSexo = new javax.swing.JLabel();
+        jLabeRaza = new javax.swing.JLabel();
+        jLabelPropietario = new javax.swing.JLabel();
+        jLabelFoto = new javax.swing.JLabel();
+        jLabelChip = new javax.swing.JLabel();
+        jButtonSalir = new javax.swing.JButton();
+        jLabelFechaNacimiento = new javax.swing.JLabel();
+        jTextFieldChip = new javax.swing.JTextField();
+        jTextFieldFecha = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelNuuevaMascota1 = new javax.swing.JLabel();
+        jLabeEspecie1 = new javax.swing.JLabel();
+        jLabelNombre1 = new javax.swing.JLabel();
+        jLabelSexo1 = new javax.swing.JLabel();
+        jLabeRaza1 = new javax.swing.JLabel();
+        jLabelPropietario1 = new javax.swing.JLabel();
+        jLabelFoto1 = new javax.swing.JLabel();
+        jLabelChip1 = new javax.swing.JLabel();
+        jButtonSalir1 = new javax.swing.JButton();
+        jLabelFechaNacimiento1 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextFieldEspecie = new javax.swing.JTextField();
+        jTextFieldRaza = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldSexo = new javax.swing.JTextField();
+        jTextFieldPropietario = new javax.swing.JTextField();
+        jTextFieldFoto = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
         cerrarSesion = new javax.swing.JButton();
         jTextBuscarCliente = new javax.swing.JTextField();
         jButtonNuevaMascota = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         fondo = new javax.swing.JLabel();
 
-        jLabelFondo.setBackground(new java.awt.Color(204, 204, 204));
-        jDialogNuevaMascota.getContentPane().add(jLabelFondo, java.awt.BorderLayout.CENTER);
+        jDialogNuevaMascota.setUndecorated(true);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(null);
+
+        jLabeEspecie.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabeEspecie.setText("ESPECIE:");
+        jPanel1.add(jLabeEspecie);
+        jLabeEspecie.setBounds(0, 150, 150, 20);
+
+        jLabelNuuevaMascota.setBackground(new java.awt.Color(0, 102, 102));
+        jLabelNuuevaMascota.setFont(new java.awt.Font("Lucida Grande", 3, 24)); // NOI18N
+        jLabelNuuevaMascota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNuuevaMascota.setText("NUEVA MASCOTA");
+        jPanel1.add(jLabelNuuevaMascota);
+        jLabelNuuevaMascota.setBounds(0, 0, 340, 60);
+
+        jLabelNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNombre.setText("NOMBRE:");
+        jPanel1.add(jLabelNombre);
+        jLabelNombre.setBounds(0, 70, 150, 20);
+
+        jLabelSexo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSexo.setText("SEXO:");
+        jPanel1.add(jLabelSexo);
+        jLabelSexo.setBounds(0, 110, 150, 20);
+
+        jLabeRaza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabeRaza.setText("RAZA:");
+        jPanel1.add(jLabeRaza);
+        jLabeRaza.setBounds(0, 190, 150, 20);
+
+        jLabelPropietario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPropietario.setText("PROPIETARIO:");
+        jPanel1.add(jLabelPropietario);
+        jLabelPropietario.setBounds(0, 310, 150, 20);
+
+        jLabelFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFoto.setText("FOTO:");
+        jPanel1.add(jLabelFoto);
+        jLabelFoto.setBounds(0, 360, 150, 20);
+
+        jLabelChip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelChip.setText("CHIP:");
+        jPanel1.add(jLabelChip);
+        jLabelChip.setBounds(0, 230, 150, 20);
+
+        jButtonSalir.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
+        jButtonSalir.setText("X");
+        jButtonSalir.setContentAreaFilled(false);
+        jButtonSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSalirMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jButtonSalir);
+        jButtonSalir.setBounds(290, 0, 40, 29);
+
+        jLabelFechaNacimiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFechaNacimiento.setText("FECHA NACIMIENTO:");
+        jPanel1.add(jLabelFechaNacimiento);
+        jLabelFechaNacimiento.setBounds(0, 270, 150, 20);
+
+        jTextFieldChip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldChipActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldChip);
+        jTextFieldChip.setBounds(150, 220, 180, 30);
+        jPanel1.add(jTextFieldFecha);
+        jTextFieldFecha.setBounds(150, 260, 180, 30);
+
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setLayout(null);
+
+        jLabelNuuevaMascota1.setBackground(new java.awt.Color(0, 102, 102));
+        jLabelNuuevaMascota1.setFont(new java.awt.Font("Lucida Grande", 3, 24)); // NOI18N
+        jLabelNuuevaMascota1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNuuevaMascota1.setText("NUEVA MASCOTA");
+        jPanel2.add(jLabelNuuevaMascota1);
+        jLabelNuuevaMascota1.setBounds(0, 0, 340, 60);
+
+        jLabeEspecie1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabeEspecie1.setText("ESPECIE:");
+        jPanel2.add(jLabeEspecie1);
+        jLabeEspecie1.setBounds(0, 150, 160, 20);
+
+        jLabelNombre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNombre1.setText("NOMBRE:");
+        jPanel2.add(jLabelNombre1);
+        jLabelNombre1.setBounds(0, 70, 160, 20);
+
+        jLabelSexo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelSexo1.setText("SEXO:");
+        jPanel2.add(jLabelSexo1);
+        jLabelSexo1.setBounds(0, 110, 160, 20);
+
+        jLabeRaza1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabeRaza1.setText("RAZA:");
+        jPanel2.add(jLabeRaza1);
+        jLabeRaza1.setBounds(0, 190, 160, 20);
+
+        jLabelPropietario1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelPropietario1.setText("PROPIETARIO:");
+        jPanel2.add(jLabelPropietario1);
+        jLabelPropietario1.setBounds(0, 310, 160, 20);
+
+        jLabelFoto1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFoto1.setText("FOTO:");
+        jPanel2.add(jLabelFoto1);
+        jLabelFoto1.setBounds(0, 360, 160, 20);
+
+        jLabelChip1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelChip1.setText("CHIP:");
+        jPanel2.add(jLabelChip1);
+        jLabelChip1.setBounds(0, 230, 160, 20);
+
+        jButtonSalir1.setText("X");
+        jPanel2.add(jButtonSalir1);
+        jButtonSalir1.setBounds(300, 10, 20, 20);
+
+        jLabelFechaNacimiento1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelFechaNacimiento1.setText("FECHA NACIMIENTO:");
+        jPanel2.add(jLabelFechaNacimiento1);
+        jLabelFechaNacimiento1.setBounds(0, 270, 160, 20);
+
+        jTextField3.setText("jTextField1");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextField3);
+        jTextField3.setBounds(150, 220, 180, 30);
+
+        jTextField4.setText("jTextField1");
+        jPanel2.add(jTextField4);
+        jTextField4.setBounds(150, 260, 180, 30);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 0, 0);
+
+        jTextFieldEspecie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEspecieActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldEspecie);
+        jTextFieldEspecie.setBounds(150, 140, 180, 30);
+        jPanel1.add(jTextFieldRaza);
+        jTextFieldRaza.setBounds(150, 180, 180, 30);
+
+        jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldNombre);
+        jTextFieldNombre.setBounds(150, 60, 180, 30);
+        jPanel1.add(jTextFieldSexo);
+        jTextFieldSexo.setBounds(150, 100, 180, 30);
+
+        jTextFieldPropietario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPropietarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextFieldPropietario);
+        jTextFieldPropietario.setBounds(150, 300, 180, 30);
+        jPanel1.add(jTextFieldFoto);
+        jTextFieldFoto.setBounds(200, 330, 70, 70);
+
+        jButton1.setText("AÑADIR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(130, 410, 120, 40);
+
+        jDialogNuevaMascota.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -88,9 +303,9 @@ public class Mascotas extends javax.swing.JFrame {
         getContentPane().add(cerrarSesion);
         cerrarSesion.setBounds(427, 0, 110, 29);
 
-        jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextBuscarCliente.setText("Bucar Mascota");
+        jTextBuscarCliente.setText("BUSCAR MASCOTA");
         jTextBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextBuscarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,21 +318,38 @@ public class Mascotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextBuscarCliente);
-        jTextBuscarCliente.setBounds(60, 110, 260, 40);
+        jTextBuscarCliente.setBounds(10, 90, 260, 40);
 
-        jButtonNuevaMascota.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
-        jButtonNuevaMascota.setText("Nueva Mascota");
+        jButtonNuevaMascota.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
+        jButtonNuevaMascota.setText("NUEVA");
+        jButtonNuevaMascota.setToolTipText("");
         jButtonNuevaMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonNuevaMascotaMousePressed(evt);
             }
         });
         getContentPane().add(jButtonNuevaMascota);
-        jButtonNuevaMascota.setBounds(390, 110, 120, 40);
+        jButtonNuevaMascota.setBounds(420, 90, 120, 40);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(90, 140, 360, 280);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Fondos Wallpaper Gratis Abstractos (71).jpg"))); // NOI18N
         fondo.setText("jLabel1");
         getContentPane().add(fondo);
         fondo.setBounds(0, 0, 560, 430);
@@ -163,6 +395,44 @@ public class Mascotas extends javax.swing.JFrame {
             dispose();
     }//GEN-LAST:event_clientesMouseClicked
 
+    private void jTextFieldChipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldChipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldChipActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextFieldEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEspecieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEspecieActionPerformed
+
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+
+    private void jTextFieldPropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPropietarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPropietarioActionPerformed
+
+    private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
+                                                     
+        jButtonSalir.setVisible(true);
+          jDialogNuevaMascota.setVisible(false);
+            
+            
+            
+            
+            
+          
+       
+    
+    }//GEN-LAST:event_jButtonSalirMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -203,10 +473,44 @@ public class Mascotas extends javax.swing.JFrame {
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonNuevaMascota;
+    private javax.swing.JButton jButtonSalir;
+    private javax.swing.JButton jButtonSalir1;
     private javax.swing.JDialog jDialogNuevaMascota;
-    private javax.swing.JLabel jLabelFondo;
+    private javax.swing.JLabel jLabeEspecie;
+    private javax.swing.JLabel jLabeEspecie1;
+    private javax.swing.JLabel jLabeRaza;
+    private javax.swing.JLabel jLabeRaza1;
+    private javax.swing.JLabel jLabelChip;
+    private javax.swing.JLabel jLabelChip1;
+    private javax.swing.JLabel jLabelFechaNacimiento;
+    private javax.swing.JLabel jLabelFechaNacimiento1;
+    private javax.swing.JLabel jLabelFoto;
+    private javax.swing.JLabel jLabelFoto1;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelNombre1;
+    private javax.swing.JLabel jLabelNuuevaMascota;
+    private javax.swing.JLabel jLabelNuuevaMascota1;
+    private javax.swing.JLabel jLabelPropietario;
+    private javax.swing.JLabel jLabelPropietario1;
+    private javax.swing.JLabel jLabelSexo;
+    private javax.swing.JLabel jLabelSexo1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextBuscarCliente;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextFieldChip;
+    private javax.swing.JTextField jTextFieldEspecie;
+    private javax.swing.JTextField jTextFieldFecha;
+    private javax.swing.JTextField jTextFieldFoto;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldPropietario;
+    private javax.swing.JTextField jTextFieldRaza;
+    private javax.swing.JTextField jTextFieldSexo;
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;
     // End of variables declaration//GEN-END:variables
