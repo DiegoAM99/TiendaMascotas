@@ -67,7 +67,6 @@ public class AlfaTheDog extends javax.swing.JFrame {
         contraseña.setBounds(240, 110, 140, 26);
 
         entrar.setBackground(new java.awt.Color(255, 255, 255));
-        entrar.setForeground(new java.awt.Color(255, 255, 255));
         entrar.setText("ENTRAR");
         entrar.setContentAreaFilled(false);
         entrar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,11 +88,13 @@ public class AlfaTheDog extends javax.swing.JFrame {
         logo.setBounds(440, 130, 90, 80);
 
         alfaTheDogNombre.setFont(new java.awt.Font("Courier New", 3, 60)); // NOI18N
+        alfaTheDogNombre.setForeground(new java.awt.Color(255, 255, 255));
         alfaTheDogNombre.setText("AlfaTheDog");
         getContentPane().add(alfaTheDogNombre);
         alfaTheDogNombre.setBounds(90, 20, 370, 60);
 
         salirbotton.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
+        salirbotton.setForeground(new java.awt.Color(255, 255, 255));
         salirbotton.setText("Salir");
         salirbotton.setContentAreaFilled(false);
         salirbotton.addActionListener(new java.awt.event.ActionListener() {
