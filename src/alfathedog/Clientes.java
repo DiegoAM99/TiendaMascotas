@@ -5,6 +5,12 @@
  */
 package alfathedog;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JFrame;
 
 /**
@@ -14,6 +20,11 @@ import javax.swing.JFrame;
 public class Clientes extends javax.swing.JFrame {
 
     int x, y;
+    private Statement estado;
+    private ResultSet resultadoConsulta;
+    private Connection conexion;
+    
+   
     
     public Clientes() {
         initComponents();
@@ -24,6 +35,17 @@ public class Clientes extends javax.swing.JFrame {
        
         jDialogNuevoCliente.setSize(330, 400);
         jDialogNuevoCliente.setLocation(840, 290);
+         
+        //conexion a la base de datos//////////////////
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/clientes_mascotas_tienda","root","root");
+            estado = conexion.createStatement();
+            resultadoConsulta = estado.executeQuery("Select * from clientes_mascotas_tienda ");
+      
+        }
+        catch (Exception e){
+        }
         
     }
 
@@ -48,6 +70,7 @@ public class Clientes extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
+        jButtonGuardarCliente = new javax.swing.JButton();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
@@ -55,6 +78,8 @@ public class Clientes extends javax.swing.JFrame {
         jTextBuscarCliente = new javax.swing.JTextField();
         jButtonNuevoCliente = new javax.swing.JButton();
         jLabelMover = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCliente = new javax.swing.JTable();
         fondo = new javax.swing.JLabel();
 
         jDialogNuevoCliente.setUndecorated(true);
@@ -101,6 +126,10 @@ public class Clientes extends javax.swing.JFrame {
         jTextField3.setBounds(120, 110, 140, 30);
         jPanel1.add(jTextField4);
         jTextField4.setBounds(120, 170, 140, 30);
+
+        jButtonGuardarCliente.setText("Guardar");
+        jPanel1.add(jButtonGuardarCliente);
+        jButtonGuardarCliente.setBounds(140, 270, 77, 32);
 
         jDialogNuevoCliente.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -180,6 +209,36 @@ public class Clientes extends javax.swing.JFrame {
         });
         getContentPane().add(jLabelMover);
         jLabelMover.setBounds(1, 6, 420, 20);
+
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Apellido", "DNI", "Telefono"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableCliente);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(60, 170, 453, 120);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -280,6 +339,7 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButtonGuardarCliente;
     private javax.swing.JButton jButtonNuevoCliente;
     private javax.swing.JButton jButtonSalirNuevoCliente;
     private javax.swing.JDialog jDialogNuevoCliente;
@@ -290,6 +350,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableCliente;
     private javax.swing.JTextField jTextBuscarCliente;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
@@ -298,4 +360,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;
     // End of variables declaration//GEN-END:variables
+ 
+     
+    
+
 }
