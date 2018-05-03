@@ -56,7 +56,7 @@ public class AlfaTheDog extends javax.swing.JFrame {
         getContentPane().add(pasword);
         pasword.setBounds(150, 110, 90, 27);
         getContentPane().add(usuario);
-        usuario.setBounds(240, 80, 140, 26);
+        usuario.setBounds(240, 80, 140, 24);
 
         contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,11 +64,12 @@ public class AlfaTheDog extends javax.swing.JFrame {
             }
         });
         getContentPane().add(contraseña);
-        contraseña.setBounds(240, 110, 140, 26);
+        contraseña.setBounds(240, 110, 140, 22);
 
         entrar.setBackground(new java.awt.Color(255, 255, 255));
         entrar.setText("ENTRAR");
         entrar.setContentAreaFilled(false);
+        entrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         entrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 entrarMouseClicked(evt);
@@ -97,13 +98,14 @@ public class AlfaTheDog extends javax.swing.JFrame {
         salirbotton.setForeground(new java.awt.Color(255, 255, 255));
         salirbotton.setText("Salir");
         salirbotton.setContentAreaFilled(false);
+        salirbotton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         salirbotton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirbottonActionPerformed(evt);
             }
         });
         getContentPane().add(salirbotton);
-        salirbotton.setBounds(450, 0, 70, 29);
+        salirbotton.setBounds(450, 0, 70, 35);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo cesped.jpg"))); // NOI18N

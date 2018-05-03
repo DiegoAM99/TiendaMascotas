@@ -111,6 +111,7 @@ public class Clientes extends javax.swing.JFrame {
         jButtonSalirNuevoCliente.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         jButtonSalirNuevoCliente.setText("X");
         jButtonSalirNuevoCliente.setContentAreaFilled(false);
+        jButtonSalirNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSalirNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirNuevoClienteActionPerformed(evt);
@@ -128,6 +129,7 @@ public class Clientes extends javax.swing.JFrame {
         jTextField4.setBounds(120, 170, 140, 30);
 
         jButtonGuardarCliente.setText("Guardar");
+        jButtonGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButtonGuardarCliente);
         jButtonGuardarCliente.setBounds(140, 270, 77, 32);
 
@@ -139,17 +141,20 @@ public class Clientes extends javax.swing.JFrame {
 
         tienda.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         tienda.setText("TIENDA");
+        tienda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(tienda);
         tienda.setBounds(370, 30, 180, 60);
 
         clientes.setBackground(new java.awt.Color(102, 102, 102));
         clientes.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         clientes.setText("CLIENTES");
+        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(clientes);
         clientes.setBounds(10, 30, 180, 60);
 
         mascotas.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         mascotas.setText("MASCOTAS");
+        mascotas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         mascotas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mascotasMouseClicked(evt);
@@ -161,6 +166,7 @@ public class Clientes extends javax.swing.JFrame {
         cerrarSesion.setForeground(new java.awt.Color(0, 51, 255));
         cerrarSesion.setText("cerrar sesion");
         cerrarSesion.setContentAreaFilled(false);
+        cerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cerrarSesionActionPerformed(evt);
@@ -188,6 +194,7 @@ public class Clientes extends javax.swing.JFrame {
 
         jButtonNuevoCliente.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         jButtonNuevoCliente.setText("Nuevo Cliente");
+        jButtonNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNuevoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonNuevoClienteMousePressed(evt);
@@ -235,6 +242,7 @@ public class Clientes extends javax.swing.JFrame {
                 "Nombre", "Apellido", "DNI", "Telefono"
             }
         ));
+        jTableCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTableCliente);
 
         getContentPane().add(jScrollPane1);

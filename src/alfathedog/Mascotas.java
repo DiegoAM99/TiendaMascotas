@@ -110,6 +110,7 @@ public class Mascotas extends javax.swing.JFrame {
         jLabelNuuevaMascota.setFont(new java.awt.Font("Lucida Grande", 3, 24)); // NOI18N
         jLabelNuuevaMascota.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNuuevaMascota.setText("NUEVA MASCOTA");
+        jLabelNuuevaMascota.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabelNuuevaMascota);
         jLabelNuuevaMascota.setBounds(0, 0, 340, 60);
 
@@ -152,7 +153,7 @@ public class Mascotas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSalir);
-        jButtonSalir.setBounds(290, 0, 40, 29);
+        jButtonSalir.setBounds(290, 0, 40, 30);
 
         jLabelFechaNacimiento.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelFechaNacimiento.setText("FECHA NACIMIENTO:");
@@ -272,7 +273,7 @@ public class Mascotas extends javax.swing.JFrame {
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel1.add(jComboBox2);
-        jComboBox2.setBounds(150, 300, 190, 27);
+        jComboBox2.setBounds(150, 300, 190, 26);
 
         jDialogNuevaMascota.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -282,11 +283,13 @@ public class Mascotas extends javax.swing.JFrame {
 
         tienda.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         tienda.setText("TIENDA");
+        tienda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(tienda);
         tienda.setBounds(370, 30, 180, 60);
 
         clientes.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         clientes.setText("CLIENTES");
+        clientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         clientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 clientesMouseClicked(evt);
@@ -298,6 +301,7 @@ public class Mascotas extends javax.swing.JFrame {
         mascotas.setBackground(new java.awt.Color(102, 102, 102));
         mascotas.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         mascotas.setText("MASCOTAS");
+        mascotas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(mascotas);
         mascotas.setBounds(190, 30, 180, 60);
 
@@ -310,9 +314,8 @@ public class Mascotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 29);
+        cerrarSesion.setBounds(427, 0, 110, 32);
 
-        jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextBuscarCliente.setText("BUSCAR MASCOTA");
         jTextBuscarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -332,6 +335,7 @@ public class Mascotas extends javax.swing.JFrame {
         jButtonNuevaMascota.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         jButtonNuevaMascota.setText("NUEVA");
         jButtonNuevaMascota.setToolTipText("");
+        jButtonNuevaMascota.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonNuevaMascota.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButtonNuevaMascotaMousePressed(evt);
@@ -390,7 +394,7 @@ public class Mascotas extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jComboBox1);
-        jComboBox1.setBounds(60, 150, 270, 27);
+        jComboBox1.setBounds(60, 150, 270, 26);
 
         getContentPane().add(jPanel3);
         jPanel3.setBounds(70, 150, 440, 190);
