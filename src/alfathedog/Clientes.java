@@ -41,7 +41,7 @@ public class Clientes extends javax.swing.JFrame {
             Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/clientes_mascotas_tienda","root","root");
             estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from clientes_mascotas_tienda ");
+            resultadoConsulta = estado.executeQuery("Select * from veterinario");
       
         }
         catch (Exception e){
