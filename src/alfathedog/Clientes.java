@@ -39,9 +39,9 @@ public class Clientes extends javax.swing.JFrame {
         //conexion a la base de datos//////////////////
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/clientes_mascotas_tienda","root","root");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/BBDD_tienda_mascotas","root","root");
             estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from veterinario");
+            resultadoConsulta = estado.executeQuery("Select * from veterinario.nuevocliente");
       
         }
         catch (Exception e){
