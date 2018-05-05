@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,15 +20,43 @@ import javax.swing.JFrame;
  */
 public class Clientes extends javax.swing.JFrame {
 
-    int x, y;
+    int x, y;                                                                   //inicializa la variable x o y
+    
+     DefaultTableModel modelo = new DefaultTableModel();                        //inicializa la variable tabla
+     
+    // conectamos a la base de datos
     private Statement estado;
     private ResultSet resultadoConsulta;
     private Connection conexion;
-    
+    ////////////////////////////////////////
+    public void escribeDatos(){                                                 // Metodo para conectar la BBDD a la tabla
+          modelo.addColumn("Nombre");                                           // Nombre de se le da a la columna de la tabla
+          jTableCliente.setModel(modelo);                                       // Ruta hacia la tabla
+          
+        //conexion a la base de datos//////////////////
+        String datos[]= new String [4];                                         // Espacio en la memoria para guadar los datos BBDD
+          try {
+               Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/pokemon","root","root");
+            estado = conexion.createStatement();
+            resultadoConsulta = estado.executeQuery("Select * from pokemon");
+            while (resultadoConsulta.next()){
+                datos[0]=resultadoConsulta.getString(2);
+                modelo.addRow(datos);
+            }
+            jTableCliente.setModel(modelo);
+          } catch (Exception e) {
+              
+          }
+        
+                
+                }
    
     
     public Clientes() {
         initComponents();
+         escribeDatos();
+
         this.setSize(560, 430);
         this.setLocationRelativeTo(null);
   
@@ -36,16 +65,7 @@ public class Clientes extends javax.swing.JFrame {
         jDialogNuevoCliente.setSize(330, 400);
         jDialogNuevoCliente.setLocation(840, 290);
          
-        //conexion a la base de datos//////////////////
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/BBDD_tienda_mascotas","root","root");
-            estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from veterinario.nuevocliente");
-      
-        }
-        catch (Exception e){
-        }
+       
         
     }
 
