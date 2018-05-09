@@ -6,6 +6,8 @@
 package alfathedog;
 
 
+import java.awt.Desktop;
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -53,10 +55,8 @@ public class Clientes extends javax.swing.JFrame {
             jTableCliente.setModel(modelo);
           } catch (Exception e) {
               
-          }
-        
-                
-                }
+          }  
+       }
    
     
     public Clientes() {
@@ -144,7 +144,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSalirNuevoCliente);
-        jButtonSalirNuevoCliente.setBounds(287, 0, 40, 35);
+        jButtonSalirNuevoCliente.setBounds(287, 0, 40, 27);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(120, 230, 140, 30);
         jPanel1.add(jTextField2);
@@ -157,7 +157,7 @@ public class Clientes extends javax.swing.JFrame {
         jButtonGuardarCliente.setText("Guardar");
         jButtonGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jButtonGuardarCliente);
-        jButtonGuardarCliente.setBounds(140, 270, 77, 32);
+        jButtonGuardarCliente.setBounds(140, 270, 77, 23);
 
         jDialogNuevoCliente.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -168,6 +168,11 @@ public class Clientes extends javax.swing.JFrame {
         tienda.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         tienda.setText("TIENDA");
         tienda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tienda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tiendaMousePressed(evt);
+            }
+        });
         getContentPane().add(tienda);
         tienda.setBounds(370, 30, 180, 60);
 
@@ -199,7 +204,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 32);
+        cerrarSesion.setBounds(427, 0, 110, 23);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -272,7 +277,7 @@ public class Clientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableCliente);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(60, 170, 453, 120);
+        jScrollPane1.setBounds(60, 170, 452, 120);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -333,6 +338,19 @@ public class Clientes extends javax.swing.JFrame {
     private void jButtonSalirNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirNuevoClienteActionPerformed
         jDialogNuevoCliente.setVisible(false);
     }//GEN-LAST:event_jButtonSalirNuevoClienteActionPerformed
+
+    private void tiendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tiendaMousePressed
+       try {
+    if (Desktop.isDesktopSupported()) {
+    Desktop desktop = Desktop.getDesktop();
+    if (desktop.isSupported(Desktop.Action.BROWSE)) {
+    desktop.browse(new URI("https://alvarezmd9.wixsite.com/veterinario"));
+        }
+    }
+} catch (Exception e) {
+e.printStackTrace();
+}
+    }//GEN-LAST:event_tiendaMousePressed
 
     /**
      * @param args the command line arguments
