@@ -17,7 +17,7 @@ Chip varchar(20),
 Fecha_nacimiento VARCHAR(20) NOT NULL,
 Propietario varchar(15),
 PRIMARY KEY (Nombre),
-FOREIGN KEY(Propietario) REFERENCES nuevocliente(Nombre)
+UNIQUE KEY(Propietario) 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS nuevavisita(
