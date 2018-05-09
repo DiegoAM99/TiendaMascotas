@@ -40,14 +40,14 @@ public class Clientes extends javax.swing.JFrame {
         String datos[]= new String [4];                                         // Espacio en la memoria para guadar los datos BBDD
           try {
                Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/pokemon","root","root");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
             estado = conexion.createStatement();
-            resultadoConsulta = estado.executeQuery("Select * from pokemon");
+            resultadoConsulta = estado.executeQuery("Select * from nuevocliente");
             while (resultadoConsulta.next()){
-                datos[0]=resultadoConsulta.getString(2);
-                datos[1]=resultadoConsulta.getString(5);
-                datos[2]=resultadoConsulta.getString(6);
-                datos[3]=resultadoConsulta.getString(12);
+                datos[0]=resultadoConsulta.getString(1);
+                datos[1]=resultadoConsulta.getString(2);
+                datos[2]=resultadoConsulta.getString(3);
+                datos[3]=resultadoConsulta.getString(4);
                 modelo.addRow(datos);
             }
             jTableCliente.setModel(modelo);
