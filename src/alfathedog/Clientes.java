@@ -31,6 +31,9 @@ public class Clientes extends javax.swing.JFrame {
     ////////////////////////////////////////
     public void escribeDatos(){                                                 // Metodo para conectar la BBDD a la tabla
           modelo.addColumn("Nombre");                                           // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Apellido");                                         // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("DNI");                                              // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Telefono");                                         // Nombre de se le da a la columna de la tabla
           jTableCliente.setModel(modelo);                                       // Ruta hacia la tabla
           
         //conexion a la base de datos//////////////////
@@ -42,6 +45,9 @@ public class Clientes extends javax.swing.JFrame {
             resultadoConsulta = estado.executeQuery("Select * from pokemon");
             while (resultadoConsulta.next()){
                 datos[0]=resultadoConsulta.getString(2);
+                datos[1]=resultadoConsulta.getString(5);
+                datos[2]=resultadoConsulta.getString(6);
+                datos[3]=resultadoConsulta.getString(12);
                 modelo.addRow(datos);
             }
             jTableCliente.setModel(modelo);
