@@ -40,9 +40,9 @@ public class Clientes extends javax.swing.JFrame {
           modelo.addColumn("DNI");                                              // Nombre de se le da a la columna de la tabla
           modelo.addColumn("Telefono");                                         // Nombre de se le da a la columna de la tabla
           jTableCliente.setModel(modelo);                                       // Ruta hacia la tabla
-     
+    }
         //conexion a la base de datos//////////////////
-       
+     public void conexion(){  
           try {
                Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
@@ -55,14 +55,14 @@ public class Clientes extends javax.swing.JFrame {
                 datos[3]=resultadoConsulta.getString(4);
                 modelo.addRow(datos);
             }
-            
+            jTableCliente.setModel(modelo);
           } catch (Exception e) {
               
           }  
        
 }
     
-    
+
    public void limpiar(){
         jTextField2.setText("");
         jTextField3.setText("");
@@ -77,7 +77,7 @@ public class Clientes extends javax.swing.JFrame {
     public Clientes() {
         initComponents();
          escribeDatos();
-         
+         conexion();
         this.setSize(560, 430);
         this.setLocationRelativeTo(null);
   
@@ -443,7 +443,7 @@ e.printStackTrace();
             
        }
        else{
-           System.out.println("No encuentra ningun dato");
+            JOptionPane.showMessageDialog(null,"No has seleccionado la fila");
        
        }
        
@@ -457,21 +457,20 @@ e.printStackTrace();
                     +jTextField1.getText()+"' WHERE DNI='"+jTextBuscarCliente.getText()+"'");
  
               pps.executeUpdate();
+              
               JOptionPane.showMessageDialog(null, "Datos Actualizados");
               limpiar();
-//              model.getDataVector().removeAllElements();
-          
-              
-             
-              
+ 
+              modelo.getDataVector().removeAllElements();
+              conexion();
               
               
     }     
                 catch (Exception e) {
         }
-        
+         
     }//GEN-LAST:event_jButtonActualizarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -535,8 +534,5 @@ e.printStackTrace();
     private javax.swing.JButton mascotas;
     private javax.swing.JButton tienda;
     // End of variables declaration//GEN-END:variables
- 
-     
-    
 
 }
