@@ -10,6 +10,7 @@ import java.awt.Desktop;
 import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -144,7 +145,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSalirNuevoCliente);
-        jButtonSalirNuevoCliente.setBounds(287, 0, 40, 27);
+        jButtonSalirNuevoCliente.setBounds(287, 0, 40, 35);
         jPanel1.add(jTextField1);
         jTextField1.setBounds(120, 230, 140, 30);
         jPanel1.add(jTextField2);
@@ -156,8 +157,13 @@ public class Clientes extends javax.swing.JFrame {
 
         jButtonGuardarCliente.setText("Guardar");
         jButtonGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarClienteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonGuardarCliente);
-        jButtonGuardarCliente.setBounds(140, 270, 77, 23);
+        jButtonGuardarCliente.setBounds(140, 270, 77, 32);
 
         jDialogNuevoCliente.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -204,7 +210,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrarSesion);
-        cerrarSesion.setBounds(427, 0, 110, 23);
+        cerrarSesion.setBounds(427, 0, 110, 32);
 
         jTextBuscarCliente.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jTextBuscarCliente.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -277,7 +283,7 @@ public class Clientes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableCliente);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(60, 170, 452, 120);
+        jScrollPane1.setBounds(60, 170, 453, 120);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -351,6 +357,26 @@ public class Clientes extends javax.swing.JFrame {
 e.printStackTrace();
 }
     }//GEN-LAST:event_tiendaMousePressed
+
+    private void jButtonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarClienteActionPerformed
+        try {
+               Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
+            estado = conexion.createStatement();
+            PreparedStatement pps = conexion.prepareStatement("INSERT INTO nuevocliente(Nombre,Apellido,DNI, Teléfono) VALUES (?,?,?,?)");
+                pps.setString(1, jTextField2.getText());
+                pps.setString(2, jTextField3.getText());
+                pps.setString(3, jTextField4.getText());
+                pps.setString(4, jTextField1.getText());
+                pps.executeUpdate();
+                
+                
+            
+            
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_jButtonGuardarClienteActionPerformed
 
     /**
      * @param args the command line arguments
