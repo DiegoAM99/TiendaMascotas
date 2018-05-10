@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
+import javax.smartcardio.ATR;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -26,14 +27,15 @@ import javax.swing.table.TableColumnModel;
 public class Clientes extends javax.swing.JFrame {
 
     int x, y;                                                                   //inicializa la variable x o y
-     String datos[]= new String [4];                                         // Espacio en la memoria para guadar los datos BBDD
+     String datos[]= new String [4];                                            // Espacio en la memoria para guadar los datos BBDD
      DefaultTableModel modelo = new DefaultTableModel();                        //inicializa la variable tabla
-     
-    // conectamos a la base de datos
+      String palabra="DNI";
+      String pa="";
+    // conectamos a la base de datos////////////////////////////////////////////
     private Statement estado;
     private ResultSet resultadoConsulta;
     private Connection conexion;
-    ////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
     public void escribeDatos(){                                                 // Metodo para conectar la BBDD a la tabla
           modelo.addColumn("Nombre");                                           // Nombre de se le da a la columna de la tabla
           modelo.addColumn("Apellido");                                         // Nombre de se le da a la columna de la tabla
@@ -41,8 +43,14 @@ public class Clientes extends javax.swing.JFrame {
           modelo.addColumn("Telefono");                                         // Nombre de se le da a la columna de la tabla
           jTableCliente.setModel(modelo);                                       // Ruta hacia la tabla
     }
-        //conexion a la base de datos//////////////////
-     public void conexion(){  
+    
+    
+        //conexion a la base de datos///////////////////////////////////////////
+     public void conexion(){
+         
+        
+             
+             
           try {
                Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
@@ -62,29 +70,36 @@ public class Clientes extends javax.swing.JFrame {
        
 }
     
-
    public void limpiar(){
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField1.setText("");
-        jTextBuscarCliente.setText("");
+        jTextField2.setText("");                                                //se limpia el campo nombre
+        jTextField3.setText("");                                                //se limpia el campo apellido
+        jTextField4.setText("");                                                //se limpia el campo dni
+        jTextField1.setText("");                                                //se limpia el campo telefono
+        jTextBuscarCliente.setText("");                                         //se limpia el campo buscar cliente
         
+   
+   }
+   public void nombrebuscar(){
+       jComboBuscar.addItem("Nombre");
+       jComboBuscar.addItem("Apellido");
+       jComboBuscar.addItem("DNI");
+       jComboBuscar.addItem("Telefono");
    
    }
    
     
     public Clientes() {
-        initComponents();
-         escribeDatos();
-         conexion();
-        this.setSize(560, 430);
-        this.setLocationRelativeTo(null);
+        initComponents();                                                       //se inicia el programa
+         escribeDatos();                                                        //se escribe el nombre de la columnas de la tabla
+         conexion();                                                            //se inicia los datos BBDD en la tabla
+         nombrebuscar();
+        this.setSize(560, 430);                                                 //dimension del programa jpanel
+        this.setLocationRelativeTo(null);                                       //posiciona el programa en medio de la pantalla
   
-        //modificaciones de la ventana nueva mascota
+        //modificaciones de la ventana nuevo cliente
        
-        jDialogNuevoCliente.setSize(380, 400);
-        jDialogNuevoCliente.setLocation(975, 290);
+        jDialogNuevoCliente.setSize(380, 400);                                  //dimensiones de la pantalla nuevo cliente jdialog
+        jDialogNuevoCliente.setLocation(975, 290);                              //posicion donde se inicia la pantalla nuevo cliente
          
        
         
@@ -124,6 +139,9 @@ public class Clientes extends javax.swing.JFrame {
         jLabelMover = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableCliente = new javax.swing.JTable();
+        jButtonEliminarCliente = new javax.swing.JButton();
+        jComboBuscar = new javax.swing.JComboBox<>();
+        jButtonBuscarClientePor = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         jDialogNuevoCliente.setUndecorated(true);
@@ -241,6 +259,11 @@ public class Clientes extends javax.swing.JFrame {
                 mascotasMouseClicked(evt);
             }
         });
+        mascotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mascotasActionPerformed(evt);
+            }
+        });
         getContentPane().add(mascotas);
         mascotas.setBounds(190, 30, 180, 60);
 
@@ -271,7 +294,7 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextBuscarCliente);
-        jTextBuscarCliente.setBounds(60, 110, 260, 40);
+        jTextBuscarCliente.setBounds(60, 100, 260, 30);
 
         jButtonNuevoCliente.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
         jButtonNuevoCliente.setText("Nuevo Cliente");
@@ -281,8 +304,13 @@ public class Clientes extends javax.swing.JFrame {
                 jButtonNuevoClienteMousePressed(evt);
             }
         });
+        jButtonNuevoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoClienteActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonNuevoCliente);
-        jButtonNuevoCliente.setBounds(390, 110, 120, 40);
+        jButtonNuevoCliente.setBounds(400, 110, 120, 40);
 
         jLabelMover.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         jLabelMover.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -329,6 +357,28 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(60, 170, 453, 120);
 
+        jButtonEliminarCliente.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jButtonEliminarCliente.setText("Eliminar Cliente");
+        jButtonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarClienteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEliminarCliente);
+        jButtonEliminarCliente.setBounds(400, 340, 120, 40);
+
+        getContentPane().add(jComboBuscar);
+        jComboBuscar.setBounds(60, 140, 160, 26);
+
+        jButtonBuscarClientePor.setText("Buscar");
+        jButtonBuscarClientePor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarClientePorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonBuscarClientePor);
+        jButtonBuscarClientePor.setBounds(240, 142, 71, 20);
+
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fondo.jpg"))); // NOI18N
@@ -340,6 +390,9 @@ public class Clientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarSesionActionPerformed
+        
+        //cierra sesion del programa////////////////////////////////////////////
+        
         cerrarSesion.setVisible(true);
          Clientes CL= new Clientes();
             
@@ -360,11 +413,11 @@ public class Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextBuscarClienteActionPerformed
 
     private void jTextBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextBuscarClienteMouseClicked
-        jTextBuscarCliente.setText(" ");
+        jTextBuscarCliente.setText(" ");                                        //cuando vamos a buscar un cliente se borra(BUSCAR NUEVO CLIENTE)
     }//GEN-LAST:event_jTextBuscarClienteMouseClicked
 
     private void jButtonNuevoClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNuevoClienteMousePressed
-        Clientes CL= new Clientes();
+       
         jDialogNuevoCliente.setVisible(true);
     }//GEN-LAST:event_jButtonNuevoClienteMousePressed
 
@@ -377,16 +430,16 @@ public class Clientes extends javax.swing.JFrame {
     }//GEN-LAST:event_mascotasMouseClicked
 
     private void jLabelMoverMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMoverMousePressed
-        x = evt.getX();
+        x = evt.getX();                                                         
         y = evt.getY();
     }//GEN-LAST:event_jLabelMoverMousePressed
 
     private void jLabelMoverMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMoverMouseDragged
-        this.setLocation(this.getLocation().x + evt.getX() - x, this.getLocation().y + evt.getY() -  y);
+        this.setLocation(this.getLocation().x + evt.getX() - x, this.getLocation().y + evt.getY() -  y);//para mover el programa por la pantalla
     }//GEN-LAST:event_jLabelMoverMouseDragged
 
     private void jButtonSalirNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirNuevoClienteActionPerformed
-        jDialogNuevoCliente.setVisible(false);
+        jDialogNuevoCliente.setVisible(false);                                  //
     }//GEN-LAST:event_jButtonSalirNuevoClienteActionPerformed
 
     private void tiendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tiendaMousePressed
@@ -403,6 +456,8 @@ e.printStackTrace();
     }//GEN-LAST:event_tiendaMousePressed
 
     private void jButtonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarClienteActionPerformed
+        
+        //inserta un nuevo cliente en la BBDD///////////////////////////////////
         try {
                Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
@@ -413,12 +468,7 @@ e.printStackTrace();
                 pps.setString(3, jTextField4.getText());
                 pps.setString(4, jTextField1.getText());
                 pps.executeUpdate();
-               
-                
-               
-                
-                
-            
+
             
         } catch (Exception e) {
             System.out.println("error");
@@ -427,11 +477,15 @@ e.printStackTrace();
     }//GEN-LAST:event_jButtonGuardarClienteActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
+        //para limpiar todos los campos escritos////////////////////////////////
         limpiar();
     }//GEN-LAST:event_jButtonLimpiarActionPerformed
 
     private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
-       int fila = jTableCliente.getSelectedRow();
+       
+        // seleccionamos una fila de la tabla para escribirla en todo los campos de nuevo cliente//////////////////
+        
+        int fila = jTableCliente.getSelectedRow();
        
        if(fila>=0){
            
@@ -450,6 +504,9 @@ e.printStackTrace();
     }//GEN-LAST:event_jButtonModificarActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+        
+        //para modificar los datos de cliente y actualizar la base de datos//////////////
+        
         try {
            
             PreparedStatement pps = conexion.prepareStatement("UPDATE nuevocliente SET Nombre='"+jTextField2.getText()+"',Apellido='"
@@ -470,6 +527,42 @@ e.printStackTrace();
         }
          
     }//GEN-LAST:event_jButtonActualizarActionPerformed
+
+    private void jButtonNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNuevoClienteActionPerformed
+
+    private void mascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mascotasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mascotasActionPerformed
+
+    private void jButtonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarClienteActionPerformed
+       int fila = jTableCliente.getSelectedRow();
+       String valor = jTableCliente.getValueAt(fila, 2).toString();
+       if(fila>=0){
+            try {
+                PreparedStatement pps = conexion.prepareStatement("DELETE FROM nuevocliente WHERE DNI='"+valor+"'");
+                pps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Dato Eliminado");
+                 modelo.getDataVector().removeAllElements();
+                 conexion();
+                
+                
+           } catch (Exception e) {
+           }
+       
+       }
+       
+       
+       
+    }//GEN-LAST:event_jButtonEliminarClienteActionPerformed
+
+    private void jButtonBuscarClientePorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarClientePorActionPerformed
+       
+      
+      
+       
+    }//GEN-LAST:event_jButtonBuscarClientePorActionPerformed
     
     /**
      * @param args the command line arguments
@@ -511,11 +604,14 @@ e.printStackTrace();
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButtonActualizar;
+    private javax.swing.JButton jButtonBuscarClientePor;
+    private javax.swing.JButton jButtonEliminarCliente;
     private javax.swing.JButton jButtonGuardarCliente;
     private javax.swing.JButton jButtonLimpiar;
     private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevoCliente;
     private javax.swing.JButton jButtonSalirNuevoCliente;
+    private javax.swing.JComboBox<String> jComboBuscar;
     private javax.swing.JDialog jDialogNuevoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelApellido;
