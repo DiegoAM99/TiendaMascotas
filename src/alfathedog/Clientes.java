@@ -15,7 +15,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.HashMap;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -24,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class Clientes extends javax.swing.JFrame {
 
     int x, y;                                                                   //inicializa la variable x o y
-    
+     String datos[]= new String [4];                                         // Espacio en la memoria para guadar los datos BBDD
      DefaultTableModel modelo = new DefaultTableModel();                        //inicializa la variable tabla
      
     // conectamos a la base de datos
@@ -38,9 +40,9 @@ public class Clientes extends javax.swing.JFrame {
           modelo.addColumn("DNI");                                              // Nombre de se le da a la columna de la tabla
           modelo.addColumn("Telefono");                                         // Nombre de se le da a la columna de la tabla
           jTableCliente.setModel(modelo);                                       // Ruta hacia la tabla
-          
+     
         //conexion a la base de datos//////////////////
-        String datos[]= new String [4];                                         // Espacio en la memoria para guadar los datos BBDD
+       
           try {
                Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
@@ -53,24 +55,36 @@ public class Clientes extends javax.swing.JFrame {
                 datos[3]=resultadoConsulta.getString(4);
                 modelo.addRow(datos);
             }
-            jTableCliente.setModel(modelo);
+            
           } catch (Exception e) {
               
           }  
-       }
+       
+}
+    
+    
+   public void limpiar(){
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField1.setText("");
+        jTextBuscarCliente.setText("");
+        
+   
+   }
    
     
     public Clientes() {
         initComponents();
          escribeDatos();
-
+         
         this.setSize(560, 430);
         this.setLocationRelativeTo(null);
   
         //modificaciones de la ventana nueva mascota
        
-        jDialogNuevoCliente.setSize(330, 400);
-        jDialogNuevoCliente.setLocation(840, 290);
+        jDialogNuevoCliente.setSize(380, 400);
+        jDialogNuevoCliente.setLocation(975, 290);
          
        
         
@@ -98,6 +112,9 @@ public class Clientes extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jButtonGuardarCliente = new javax.swing.JButton();
+        jButtonLimpiar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
+        jButtonActualizar = new javax.swing.JButton();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
@@ -145,15 +162,15 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonSalirNuevoCliente);
-        jButtonSalirNuevoCliente.setBounds(287, 0, 40, 35);
+        jButtonSalirNuevoCliente.setBounds(340, 0, 40, 35);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(120, 230, 140, 30);
+        jTextField1.setBounds(120, 230, 200, 30);
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(120, 54, 140, 30);
+        jTextField2.setBounds(120, 54, 200, 30);
         jPanel1.add(jTextField3);
-        jTextField3.setBounds(120, 110, 140, 30);
+        jTextField3.setBounds(120, 110, 200, 30);
         jPanel1.add(jTextField4);
-        jTextField4.setBounds(120, 170, 140, 30);
+        jTextField4.setBounds(120, 170, 200, 30);
 
         jButtonGuardarCliente.setText("Guardar");
         jButtonGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -163,7 +180,34 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButtonGuardarCliente);
-        jButtonGuardarCliente.setBounds(140, 270, 77, 32);
+        jButtonGuardarCliente.setBounds(20, 270, 77, 32);
+
+        jButtonLimpiar.setText("Limpiar");
+        jButtonLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonLimpiar);
+        jButtonLimpiar.setBounds(187, 270, 80, 32);
+
+        jButtonModificar.setText("Modificar");
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonModificar);
+        jButtonModificar.setBounds(100, 270, 83, 32);
+
+        jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonActualizar);
+        jButtonActualizar.setBounds(270, 270, 90, 32);
 
         jDialogNuevoCliente.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -371,13 +415,62 @@ e.printStackTrace();
                 pps.executeUpdate();
                
                 
+               
+                
                 
             
             
         } catch (Exception e) {
             System.out.println("error");
         }
+        
     }//GEN-LAST:event_jButtonGuardarClienteActionPerformed
+
+    private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButtonLimpiarActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+       int fila = jTableCliente.getSelectedRow();
+       
+       if(fila>=0){
+           
+           jTextBuscarCliente.setText(jTableCliente.getValueAt(fila, 2).toString());
+            jTextField2.setText(jTableCliente.getValueAt(fila, 0).toString());
+            jTextField3.setText(jTableCliente.getValueAt(fila, 1).toString());
+            jTextField4.setText(jTableCliente.getValueAt(fila, 2).toString());
+            jTextField1.setText(jTableCliente.getValueAt(fila, 3).toString());
+            
+       }
+       else{
+           System.out.println("No encuentra ningun dato");
+       
+       }
+       
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
+    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+        try {
+           
+            PreparedStatement pps = conexion.prepareStatement("UPDATE nuevocliente SET Nombre='"+jTextField2.getText()+"',Apellido='"
+                    +jTextField3.getText()+"',DNI='"+jTextField4.getText()+"',Teléfono='"
+                    +jTextField1.getText()+"' WHERE DNI='"+jTextBuscarCliente.getText()+"'");
+ 
+              pps.executeUpdate();
+              JOptionPane.showMessageDialog(null, "Datos Actualizados");
+              limpiar();
+//              model.getDataVector().removeAllElements();
+          
+              
+             
+              
+              
+              
+    }     
+                catch (Exception e) {
+        }
+        
+    }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,7 +511,10 @@ e.printStackTrace();
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton jButtonActualizar;
     private javax.swing.JButton jButtonGuardarCliente;
+    private javax.swing.JButton jButtonLimpiar;
+    private javax.swing.JButton jButtonModificar;
     private javax.swing.JButton jButtonNuevoCliente;
     private javax.swing.JButton jButtonSalirNuevoCliente;
     private javax.swing.JDialog jDialogNuevoCliente;
