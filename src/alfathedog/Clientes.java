@@ -47,10 +47,7 @@ public class Clientes extends javax.swing.JFrame {
     
         //conexion a la base de datos///////////////////////////////////////////
      public void conexion(){
-         
-        
-             
-             
+
           try {
                Class.forName("com.mysql.jdbc.Driver");
             conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
@@ -468,7 +465,11 @@ e.printStackTrace();
                 pps.setString(3, jTextField4.getText());
                 pps.setString(4, jTextField1.getText());
                 pps.executeUpdate();
-
+                 JOptionPane.showMessageDialog(null, "Datos Guardados");
+              limpiar();
+ 
+              modelo.getDataVector().removeAllElements();
+              conexion();
             
         } catch (Exception e) {
             System.out.println("error");
@@ -537,12 +538,15 @@ e.printStackTrace();
     }//GEN-LAST:event_mascotasActionPerformed
 
     private void jButtonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarClienteActionPerformed
-       int fila = jTableCliente.getSelectedRow();
+      
+        int fila = jTableCliente.getSelectedRow();
        String valor = jTableCliente.getValueAt(fila, 2).toString();
        if(fila>=0){
             try {
                 PreparedStatement pps = conexion.prepareStatement("DELETE FROM nuevocliente WHERE DNI='"+valor+"'");
+                
                 pps.executeUpdate();
+                
                 JOptionPane.showMessageDialog(null, "Dato Eliminado");
                  modelo.getDataVector().removeAllElements();
                  conexion();

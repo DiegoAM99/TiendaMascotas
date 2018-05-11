@@ -121,8 +121,8 @@ public class AlfaTheDog extends javax.swing.JFrame {
     }//GEN-LAST:event_contraseñaActionPerformed
 
     private void entrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrarMouseClicked
-        String Login="";
-        String Password="";
+        String Login="djs";
+        String Password="djs";
         
         String Pass= new String(contraseña.getPassword());
         

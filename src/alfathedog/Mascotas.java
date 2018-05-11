@@ -5,27 +5,105 @@
  */
 package alfathedog;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javafx.scene.layout.Background;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author djs
  */
 public class Mascotas extends javax.swing.JFrame {
+     int x, y;                                                                  //inicializa la variable x o y
+     String datos[]= new String [7];                                            // Espacio en la memoria para guadar los datos BBDD
+     DefaultTableModel modelo = new DefaultTableModel();                        //inicializa la variable tabla
+     String palabra="DNI";
+     String pa="";
+    // conectamos a la base de datos////////////////////////////////////////////
+    private Statement estado;
+    private ResultSet resultadoConsulta;
+    private Connection conexion;
+    ///////////////////////////////////////////////////////////////////////////
+    
+    public void escribeDatos(){                                                 // Metodo para conectar la BBDD a la tabla
+          modelo.addColumn("Nombre");                                           // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Sexo");                                         // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Especie");                                              // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Raza");                                         // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Chip");                                         // Nombre de se le da a la columna de la tabla
+          modelo.addColumn("Fecha_nacimiento");                                         // Nombre de se le da a la columna de la tabla
+           modelo.addColumn("Propietario");                                         // Nombre de se le da a la columna de la tabla
+          jTableMascota.setModel(modelo);                                       // Ruta hacia la tabla
+    }
+    
+    
+        //conexion a la base de datos///////////////////////////////////////////
+     public void conexion(){
 
+          try {
+               Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
+            estado = conexion.createStatement();
+            resultadoConsulta = estado.executeQuery("Select * from nuevamascota");
+            while (resultadoConsulta.next()){
+                datos[0]=resultadoConsulta.getString(1);
+                datos[1]=resultadoConsulta.getString(2);
+                datos[2]=resultadoConsulta.getString(3);
+                datos[3]=resultadoConsulta.getString(4);
+                 datos[4]=resultadoConsulta.getString(5);
+                  datos[5]=resultadoConsulta.getString(6);
+                   datos[6]=resultadoConsulta.getString(7);
+                modelo.addRow(datos);
+            }
+            jTableMascota.setModel(modelo);
+          } catch (Exception e) {
+              
+          }  
+       
+}
+    
+   public void limpiar(){
+        jTextFieldNombre.setText("");                                                //se limpia el campo nombre
+        jTextFieldSexo.setText("");                                                //se limpia el campo apellido
+        jTextFieldEspecie.setText("");                                                //se limpia el campo dni
+        jTextFieldRaza.setText("");                                                //se limpia el campo telefono
+        jTextFieldChip.setText("");                                                //se limpia el campo nombre
+        jTextFieldFecha1.setText("");                                                //se limpia el campo nombre
+        jTextFieldPropietario.setText("");                                                //se limpia el campo nombre
+        jTextBuscarCliente.setText("");                                         //se limpia el campo buscar cliente
+        
+   
+   }
+   public void nombrebuscar(){
+//       jComboBuscar.addItem("Nombre");
+//       jComboBuscar.addItem("Apellido");
+//       jComboBuscar.addItem("DNI");
+//       jComboBuscar.addItem("Telefono");
+   
+   }
+   
+    
     /**
      * Creates new form Clientes
      */
     public Mascotas() {
         initComponents();
+         escribeDatos();                                                        //se escribe el nombre de la columnas de la tabla
+         conexion();                                                            //se inicia los datos BBDD en la tabla
+         nombrebuscar();
         setSize(560, 430);
         this.setLocationRelativeTo(null);
         
         //modificaciones de la ventana nueva mascota
        
-        jDialogNuevaMascota.setSize(330, 450);
-        jDialogNuevaMascota.setLocation(840, 280);
+        jDialogNuevaMascota.setSize(380, 450);
+        jDialogNuevaMascota.setLocation(975, 290);
         
         
     }
@@ -47,12 +125,11 @@ public class Mascotas extends javax.swing.JFrame {
         jLabelSexo = new javax.swing.JLabel();
         jLabeRaza = new javax.swing.JLabel();
         jLabelPropietario = new javax.swing.JLabel();
-        jLabelFoto = new javax.swing.JLabel();
         jLabelChip = new javax.swing.JLabel();
         jButtonSalir = new javax.swing.JButton();
         jLabelFechaNacimiento = new javax.swing.JLabel();
         jTextFieldChip = new javax.swing.JTextField();
-        jTextFieldFecha = new javax.swing.JTextField();
+        jTextFieldPropietario = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabelNuuevaMascota1 = new javax.swing.JLabel();
         jLabeEspecie1 = new javax.swing.JLabel();
@@ -70,30 +147,20 @@ public class Mascotas extends javax.swing.JFrame {
         jTextFieldRaza = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldSexo = new javax.swing.JTextField();
-        jTextFieldFoto = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jButtonActualizar = new javax.swing.JButton();
+        jTextFieldFecha1 = new javax.swing.JTextField();
+        jButtonGuardar = new javax.swing.JButton();
+        jButtonModificar1 = new javax.swing.JButton();
+        jButtonLimpiar1 = new javax.swing.JButton();
         tienda = new javax.swing.JButton();
         clientes = new javax.swing.JButton();
         mascotas = new javax.swing.JButton();
         cerrarSesion = new javax.swing.JButton();
         jTextBuscarCliente = new javax.swing.JTextField();
         jButtonNuevaMascota = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jButtonEliminarMascota = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableMascota = new javax.swing.JTable();
         fondo = new javax.swing.JLabel();
 
         jDialogNuevaMascota.setUndecorated(true);
@@ -134,11 +201,6 @@ public class Mascotas extends javax.swing.JFrame {
         jPanel1.add(jLabelPropietario);
         jLabelPropietario.setBounds(0, 310, 150, 20);
 
-        jLabelFoto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFoto.setText("FOTO:");
-        jPanel1.add(jLabelFoto);
-        jLabelFoto.setBounds(0, 360, 150, 20);
-
         jLabelChip.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelChip.setText("CHIP:");
         jPanel1.add(jLabelChip);
@@ -167,8 +229,8 @@ public class Mascotas extends javax.swing.JFrame {
         });
         jPanel1.add(jTextFieldChip);
         jTextFieldChip.setBounds(150, 220, 180, 30);
-        jPanel1.add(jTextFieldFecha);
-        jTextFieldFecha.setBounds(150, 260, 180, 30);
+        jPanel1.add(jTextFieldPropietario);
+        jTextFieldPropietario.setBounds(150, 300, 180, 30);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(null);
@@ -259,21 +321,44 @@ public class Mascotas extends javax.swing.JFrame {
         jTextFieldNombre.setBounds(150, 60, 180, 30);
         jPanel1.add(jTextFieldSexo);
         jTextFieldSexo.setBounds(150, 100, 180, 30);
-        jPanel1.add(jTextFieldFoto);
-        jTextFieldFoto.setBounds(200, 330, 70, 70);
 
-        jButton1.setText("AÑADIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(130, 410, 120, 40);
+        jPanel1.add(jButtonActualizar);
+        jButtonActualizar.setBounds(250, 340, 110, 40);
+        jPanel1.add(jTextFieldFecha1);
+        jTextFieldFecha1.setBounds(150, 260, 180, 30);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox2);
-        jComboBox2.setBounds(150, 300, 190, 26);
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonGuardar);
+        jButtonGuardar.setBounds(10, 340, 110, 40);
+
+        jButtonModificar1.setText("Modificar");
+        jButtonModificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonModificar1);
+        jButtonModificar1.setBounds(130, 340, 110, 40);
+
+        jButtonLimpiar1.setText("Limpiar");
+        jButtonLimpiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonLimpiar1);
+        jButtonLimpiar1.setBounds(250, 400, 110, 40);
 
         jDialogNuevaMascota.getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -330,7 +415,7 @@ public class Mascotas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextBuscarCliente);
-        jTextBuscarCliente.setBounds(10, 90, 260, 40);
+        jTextBuscarCliente.setBounds(40, 100, 260, 40);
 
         jButtonNuevaMascota.setFont(new java.awt.Font("Lucida Grande", 3, 14)); // NOI18N
         jButtonNuevaMascota.setText("NUEVA");
@@ -341,63 +426,38 @@ public class Mascotas extends javax.swing.JFrame {
                 jButtonNuevaMascotaMousePressed(evt);
             }
         });
-        getContentPane().add(jButtonNuevaMascota);
-        jButtonNuevaMascota.setBounds(420, 90, 120, 40);
-
-        jPanel3.setLayout(null);
-
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 3, 13)); // NOI18N
-        jLabel1.setText("DATOS MASCOTA");
-        jPanel3.add(jLabel1);
-        jLabel1.setBounds(20, 20, 120, 30);
-
-        jLabel2.setText("RAZA:");
-        jPanel3.add(jLabel2);
-        jLabel2.setBounds(180, 60, 50, 16);
-
-        jLabel3.setText("SEXO:");
-        jPanel3.add(jLabel3);
-        jLabel3.setBounds(10, 90, 60, 16);
-
-        jLabel4.setText("NOMBRE:");
-        jPanel3.add(jLabel4);
-        jLabel4.setBounds(10, 60, 60, 16);
-        jPanel3.add(jTextField1);
-        jTextField1.setBounds(70, 80, 100, 30);
-        jPanel3.add(jTextField2);
-        jTextField2.setBounds(70, 110, 100, 30);
-        jPanel3.add(jTextField5);
-        jTextField5.setBounds(70, 50, 100, 30);
-
-        jLabel5.setText("CHIP:");
-        jPanel3.add(jLabel5);
-        jLabel5.setBounds(180, 90, 50, 16);
-
-        jLabel6.setText("FECHA NACIMIENTO:");
-        jPanel3.add(jLabel6);
-        jLabel6.setBounds(180, 120, 140, 20);
-
-        jLabel7.setText("ESPECIE:");
-        jPanel3.add(jLabel7);
-        jLabel7.setBounds(10, 120, 60, 16);
-        jPanel3.add(jTextField6);
-        jTextField6.setBounds(240, 50, 180, 30);
-        jPanel3.add(jTextField7);
-        jTextField7.setBounds(240, 80, 180, 30);
-        jPanel3.add(jTextField8);
-        jTextField8.setBounds(320, 110, 100, 30);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", " " }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonNuevaMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jButtonNuevaMascotaActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1);
-        jComboBox1.setBounds(60, 150, 270, 26);
+        getContentPane().add(jButtonNuevaMascota);
+        jButtonNuevaMascota.setBounds(410, 100, 120, 40);
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(70, 150, 440, 190);
+        jButtonEliminarMascota.setText("Eliminar Mascota");
+        jButtonEliminarMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarMascotaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonEliminarMascota);
+        jButtonEliminarMascota.setBounds(397, 370, 130, 32);
+
+        jTableMascota.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTableMascota);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(3, 180, 550, 110);
 
         fondo.setFont(new java.awt.Font("Dialog", 3, 14)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -466,7 +526,7 @@ public class Mascotas extends javax.swing.JFrame {
     private void jButtonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSalirMouseClicked
                                                      
         jButtonSalir.setVisible(true);
-          jDialogNuevaMascota.setVisible(false);
+         jDialogNuevaMascota.setVisible(false);
             
             
             
@@ -477,13 +537,108 @@ public class Mascotas extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButtonSalirMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+    
+        //para modificar los datos de cliente y actualizar la base de datos//////////////
+        
+        try {
+           
+            PreparedStatement pps = conexion.prepareStatement("UPDATE nuevamascota SET Nombre='"+jTextFieldNombre.getText()+"',Sexo='"
+                    +jTextFieldSexo.getText()+"',Especie='"+jTextFieldEspecie.getText()+"',Raza='"
+                    +jTextFieldRaza.getText()+"',Chip='"+jTextFieldChip.getText()+"',Fecha_nacimiento='"
+                    +jTextFieldFecha1.getText()+"',Propietario='"
+                    +jTextFieldPropietario.getText()+"' WHERE Chip='"+jTextBuscarCliente.getText()+"'");
+ 
+              pps.executeUpdate();
+              
+              JOptionPane.showMessageDialog(null, "Datos Actualizados");
+              limpiar();
+ 
+              modelo.getDataVector().removeAllElements();
+              conexion();
+              
+              
+    }     
+                catch (Exception e) {
+        }
+         
+                                                    
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+                                                         
+    }//GEN-LAST:event_jButtonActualizarActionPerformed
+
+    private void jButtonNuevaMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevaMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_jButtonNuevaMascotaActionPerformed
+
+    private void jButtonEliminarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarMascotaActionPerformed
+         int fila = jTableMascota.getSelectedRow();
+       String valor = jTableMascota.getValueAt(fila, 2).toString();
+       if(fila>=0){
+            try {
+                PreparedStatement pps = conexion.prepareStatement("DELETE FROM nuevocliente WHERE DNI='"+valor+"'");
+                pps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Dato Eliminado");
+                 modelo.getDataVector().removeAllElements();
+                 conexion();
+                
+                
+           } catch (Exception e) {
+           }
+       
+       }
+    }//GEN-LAST:event_jButtonEliminarMascotaActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        //inserta un nuevo cliente en la BBDD///////////////////////////////////
+        try {
+               Class.forName("com.mysql.jdbc.Driver");
+            conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1/veterinario","root","root");
+            estado = conexion.createStatement();
+            PreparedStatement pps = conexion.prepareStatement("INSERT INTO nuevamascota(Nombre,Sexo,Especie, Raza,Chip,Fecha_nacimiento,Propietario) VALUES (?,?,?,?)");
+                pps.setString(1, jTextFieldNombre.getText());
+                pps.setString(2, jTextFieldSexo.getText());
+                pps.setString(3, jTextFieldEspecie.getText());
+                pps.setString(4, jTextFieldRaza.getText());
+                pps.setString(5, jTextFieldChip.getText());
+                pps.setString(6, jTextFieldFecha1.getText());
+                pps.setString(7, jTextFieldPropietario.getText());
+                pps.executeUpdate();
+
+            
+        } catch (Exception e) {
+            System.out.println("error");
+        }
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jButtonModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificar1ActionPerformed
+        // seleccionamos una fila de la tabla para escribirla en todo los campos de nuevo cliente//////////////////
+        
+        int fila = jTableMascota.getSelectedRow();
+       
+       if(fila>=0){
+           
+           jTextBuscarCliente.setText(jTableMascota.getValueAt(fila, 2).toString());
+            jTextFieldNombre.setText(jTableMascota.getValueAt(fila, 0).toString());
+            jTextFieldSexo.setText(jTableMascota.getValueAt(fila, 1).toString());
+            jTextFieldEspecie.setText(jTableMascota.getValueAt(fila, 2).toString());
+            jTextFieldRaza.setText(jTableMascota.getValueAt(fila, 3).toString());
+            jTextFieldChip.setText(jTableMascota.getValueAt(fila, 4).toString());
+            jTextFieldFecha1.setText(jTableMascota.getValueAt(fila, 5).toString());
+            jTextFieldPropietario.setText(jTableMascota.getValueAt(fila, 6).toString());
+            
+       }
+       else{
+            JOptionPane.showMessageDialog(null,"No has seleccionado la fila");
+       
+       }
+       
+    }//GEN-LAST:event_jButtonModificar1ActionPerformed
+
+    private void jButtonLimpiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiar1ActionPerformed
+        //para limpiar todos los campos escritos////////////////////////////////
+        limpiar();
+    }//GEN-LAST:event_jButtonLimpiar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -525,29 +680,23 @@ public class Mascotas extends javax.swing.JFrame {
     private javax.swing.JButton cerrarSesion;
     private javax.swing.JButton clientes;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonActualizar;
+    private javax.swing.JButton jButtonEliminarMascota;
+    private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonLimpiar1;
+    private javax.swing.JButton jButtonModificar1;
     private javax.swing.JButton jButtonNuevaMascota;
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JButton jButtonSalir1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JDialog jDialogNuevaMascota;
     private javax.swing.JLabel jLabeEspecie;
     private javax.swing.JLabel jLabeEspecie1;
     private javax.swing.JLabel jLabeRaza;
     private javax.swing.JLabel jLabeRaza1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelChip;
     private javax.swing.JLabel jLabelChip1;
     private javax.swing.JLabel jLabelFechaNacimiento;
     private javax.swing.JLabel jLabelFechaNacimiento1;
-    private javax.swing.JLabel jLabelFoto;
     private javax.swing.JLabel jLabelFoto1;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
@@ -559,21 +708,16 @@ public class Mascotas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSexo1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableMascota;
     private javax.swing.JTextField jTextBuscarCliente;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextFieldChip;
     private javax.swing.JTextField jTextFieldEspecie;
-    private javax.swing.JTextField jTextFieldFecha;
-    private javax.swing.JTextField jTextFieldFoto;
+    private javax.swing.JTextField jTextFieldFecha1;
     private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldPropietario;
     private javax.swing.JTextField jTextFieldRaza;
     private javax.swing.JTextField jTextFieldSexo;
     private javax.swing.JButton mascotas;
